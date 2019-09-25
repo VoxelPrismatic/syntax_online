@@ -1,24 +1,25 @@
-#function {
+.function {
   color: #ff00ff;
 }
-#string {
+.string {
   color: #00ffff;
 }
-#normal {
+#
+.normal {
   color: #bbbbbb;
 }
-#fstring {
+.fstring {
   color: #ff0088;
 }
-#builtin {
+.builtin {
   color: #ff8800;
 }
-#keyword {
+.keyword {
   color: #88ff00;
 }
-#error {
+.error {
   color: #ff0000;
 }
-#operand {
+.operand {
   color: #8800ff;
 }
