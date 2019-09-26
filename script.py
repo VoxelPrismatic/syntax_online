@@ -4,7 +4,7 @@ def fn():
     codeA = doc.getElementById("coder").innerHTML
     code = codeA
     code = sub(r"<(.|\n)*?>", "", code)
-    code = sub(r"( \w+)\(.*\)", r'<span class="function">\1</span>', code)
+    code = sub(r"(\w+)\((.*)\)", r'<span class="function">\1</span>(\2)', code)
     for x in ['%', '**=', '+=', '*=', '%=', '-=', '/=', '**', 
               '^', '>=', '<=', '+', '/', '\\', '*', '==', '='
               '>', '<', '&', '|']:
