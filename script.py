@@ -30,3 +30,5 @@ def fn():
         code = sub(string, strings[string], code)
     if codeA != code:
         doc.getElementById("coder").innerHTML = code
+
+doc.getElementById("coder").onfocusout = fn()
