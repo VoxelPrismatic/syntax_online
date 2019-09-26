@@ -16,14 +16,17 @@ def fn():
               ' is ', ' in ', ' False ', ' True ', 'break', 'continue',
               'lambda ', 'global ', 'assert ', 'nonlocal']:
         code = code.replace(x, f'<span class="operand">{x}</span>')
-    
-    code = sub(r"f'(.*)'", r'<span class="fstring">f\'\1\'</span>', code)
-    code = sub(r"r'(.*)'", r'<span class="string">r\'\1\'</span>', code)
-    code = sub(r"b'(.*)'", r'<span class="bytes">b\'\1\'</span>', code)
-    code = sub(r"'(.*)'", r'<span class="string">\'\1\'</span>', code)
-    code = sub(r'f"(.*)"', r'<span class="fstring">f"\1"</span>', code)
-    code = sub(r'b"(.*)"', r'<span class="bytes">b"\1"</span>', code)
-    code = sub(r'"(.*)"', r'<span class="string">"\1"</span>', code)
-    code = sub(r'r"(.*)"', r'<span class="string">r"\1"</span>', code)
+    strings = {r"([fF])'(.*)'": r'<span class="fstring">\1\'\2\'</span>',
+               r"([bB])'(.*)'": r'<span class="bytes">\1\'\2\'</span>',
+               r"([uU])'(.*)'": r'<span class="string">\1\'\2\'</span>',
+               r"([rR])'(.*)'": r'<span class="bytes">\1\'\2\'</span>',
+               r"'(.*)'": r'<span class="string">\1\'\2\'</span>',
+               r'([fF])"(.*)"': r'<span class="fstring">\1"\2"</span>',
+               r'([bB])"(.*)"': r'<span class="bytes">\1"\2"</span>',
+               r'([uU])"(.*)"': r'<span class="string">\1"\2"</span>',
+               r'([rR])"(.*)"': r'<span class="bytes">\1"\2"</span>',
+               r'"(.*)"': r'<span class="string">\1"\2"</span>'}
+    for string in strings:
+        code = sub(string, strings[string], code)
     if codeA != code:
         doc.getElementById("coder").innerHTML = code
