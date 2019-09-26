@@ -2,6 +2,7 @@ from browser import document as doc
 from re import *
 from string import punctuation
 def fn():
+    doc.write('ready')
     codeA = doc.getElementById("coder").innerHTML
     code = codeA
     code = sub(r"<(.|\n)*?>", "", code)
@@ -31,7 +32,7 @@ def fn():
                r'([uU])"(.*)"': r'<span class="string">\1"\2"</span>',
                r'([rR])"(.*)"': r'<span class="bytes">\1"\2"</span>',
                r'"(.*)"': r'<span class="string">\1"\2"</span>'}
-    for string in stringst
+    for string in strings:
         code = sub(string, strings[string], code)
     if codeA != code:
         doc.getElementById("coder").innerHTML = code
