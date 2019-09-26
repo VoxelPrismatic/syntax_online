@@ -10,10 +10,12 @@ def fn():
               '>', '<', '&', '|']:
         code = code.replace(x, f'<span class="operand">{x}</span>')
     code = sub(r"f'(.*)'", r'<span class="fstring">f\'\1\'</span>', code)
+    code = sub(r"r'(.*)'", r'<span class="string">r\'\1\'</span>', code)
     code = sub(r"b'(.*)'", r'<span class="bytes">b\'\1\'</span>', code)
-    code = sub(r"f'(.*)'", r'<span class="string">\'\1\'</span>', code)
+    code = sub(r"'(.*)'", r'<span class="string">\'\1\'</span>', code)
     code = sub(r'f"(.*)"', r'<span class="fstring">f"\1"</span>', code)
     code = sub(r'b"(.*)"', r'<span class="bytes">b"\1"</span>', code)
     code = sub(r'"(.*)"', r'<span class="string">"\1"</span>', code)
+    code = sub(r'r"(.*)"', r'<span class="string">r"\1"</span>', code)
     if codeA != code:
         doc.getElementById("coder").innerHTML = code
