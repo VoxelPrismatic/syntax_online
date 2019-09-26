@@ -19,6 +19,9 @@
 .error {
   color: #ff0000;
 }
+.bytes {
+  color: #0088ff;
+}
 .operand {
   color: #8800ff;
 }
