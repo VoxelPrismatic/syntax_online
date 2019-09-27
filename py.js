@@ -1,3 +1,4 @@
+doc = document
 function fn(){
     doc.write('ready')
     codeA = doc.getElementById("coder").innerHTML
