@@ -44,4 +44,4 @@ function fn(){
     if (codeA != code)
         doc.getElementById("coder").innerHTML = code;
 }
-doc.getElementById("coder").addEventListener("blur", fn, True)
+doc.getElementById("coder").addEventListener("blur", fn, true)
