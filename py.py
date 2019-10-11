@@ -5,7 +5,7 @@ from fns import *
 def rm():
     st = gID("coder").innerHTML
     st = sub(r'<span class="\w+">', "", sub(r"<\/span>", "", st+" "))
-    st = sub("<.>", "", sub(r"<\/.>", ""))
+    st = sub("<.>", "", sub(r"<\/.>", "", st))
     gID("coder").innerHTML = st
 
 def fn(*args):
