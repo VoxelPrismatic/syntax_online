@@ -8,7 +8,7 @@ def rm():
     st = sub("<.>", "", sub(r"<\/.>", ""))
     eEDIT("coder", st)
 
-def fn():
+def fn(*args):
     rm()
     code = doc["coder"].text.replace("<div>", '\n').replace("</div>", '\t');
     code = sub(r"'(.*)'", r"<s>'\1'<<>", code)
