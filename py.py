@@ -54,5 +54,5 @@ def fn():
     doc.getElementById("coder").innerHTML = code.replace("\n","<div>").replace("\t","</div>");
     console.log(doc.getElementById("coder").innerHTML);
 }
-doc.getElementById("coder").addEventListener("focusout", fn, true);
-doc.getElementById("coder").addEventListener("focusin", rm, true);
+doc["coder"].bind("focusout", fn);
+doc["coder"].bind("focusin", rm);
