@@ -15,7 +15,7 @@ def rm():
 
 def fn(*args):
     rm()
-    code = doc["coder"].innerHTML.replace("<div>", '\n').replace("</div>", '\t');
+    code = doc["coder"].innerHTML.replace("<div>", '\|').replace("</div>", '\~');
     code = sub(r'((\w+\.?)*)\(', r'<f>\1<<>(', code)
     code = sub(r'__(.*)__', r'<i>__\1__</i>', code)
     for kw in ['for', 'while', 'import', 'yield', 'from', 'del', 
@@ -26,17 +26,17 @@ def fn(*args):
                'lambda ', 'global', 'assert', 'nonlocal']:
         code = code.replace(kw, f"<b><o>{kw}<<><\b>")
     code = sub(r"([uUfF])'(.*)'", r"<d>\1'\2'<<>", code)
-    code = sub(r"([rRuU])'(.*)'", r"<x>\1'\2'<<>", code)
+    code = sub(r"([rRbb])'(.*)'", r"<x>\1'\2'<<>", code)
     code = sub(r'([uUfF])"(.*)"', r'<d>\1"\2"<<>', code)
-    code = sub(r'([rRuU])"(.*)"', r'<x>\1"\2"<<>', code)
-    code = sub(r"'(.*)'", r"<s>'\1'<<>", code)
-    code = sub(r'"(.*)"', r'<s>"\1"<<>', code)
+    code = sub(r'([rRbB])"(.*)"', r'<x>\1"\2"<<>', code)
+    code = sub(r"[^rRuUfFbB]'(.*)'", r"<s>'\1'<<>", code)
+    code = sub(r'[^rRuUfFbB]"(.*)"', r'<s>"\1"<<>', code)
     code = sub(r"\#(.*)", r"<c>\#\1<<>", code)
     code = code.replace("<f>", '<span class="function">').replace("<s>", '<span class="string">')
     code = code.replace("<t>", '<span class="builtin">').replace("<o>", '<span class="operand">')
     code = code.replace("<c>", '<span class="comment">').replace("<x>", '<span class="bytes">')
     code = code.replace("<d>", '<span class="fstring">').replace("<<>", '</span>');
     code = sub(r'<span class="(.*)">(.*)<span class=".*">(.*)<\/span>(.*)<\/span>', 
-               r'<span class="\1">\2\3\4</span', code);
-    doc["coder"].innerHTML = code.replace("\n","<div>").replace("\t","</div>");
+               r'<span class="\1">\2\3\4</span>', code);
+    doc["coder"].innerHTML = code.replace("\|","<div>").replace("\~","</div>");
 doc["coder"].bind("focusout", fn);
