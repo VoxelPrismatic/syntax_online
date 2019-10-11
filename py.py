@@ -16,7 +16,7 @@ def rm():
 def fn(*args):
     rm()
     code = doc["coder"].innerHTML.replace("<div>", '\n').replace("</div>", '\t');
-    code = sub(r'((\w+\.)*)\(', r'<f>\1<<>(', code)
+    code = sub(r'((\w+\.?)*)\(', r'<f>\1<<>(', code)
     code = sub(r'__(.*)__', r'<i>__\1__</i>', code)
     for kw in ['for', 'while', 'import', 'yield', 'from', 'del', 
                'pass', 'def', 'if', 'elif', 'else', 'try', 'raise',
