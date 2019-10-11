@@ -51,8 +51,8 @@ def fn():
     code = code.replace("<c>", '<span class="comment">').replace("<x>", '<span class="bytes">')
     code = code.replace("<d>", '<span class="fstring">').replace("<<>", '</span>');
     #code = regex(/<span class="(.*)">(.*)<span class=".*">(.*)<\/span>(.*)<\/span>/, code, sp("${2}${3}${4}", "${1}"));
-    doc.getElementById("coder").innerHTML = code.replace("\n","<div>").replace("\t","</div>");
+    doc.["coder"].innerHTML = code.replace("\n","<div>").replace("\t","</div>");
     #console.log(doc.getElementById("coder").innerHTML);
-}
+
 doc["coder"].bind("focusout", fn);
 doc["coder"].bind("focusin", rm);
