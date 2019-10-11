@@ -3,14 +3,14 @@ from re import sub, match
 from fns import *
 
 def rm():
-    st = gHTML("coder")
+    st = gID("coder").innerHTML
     st = sub(r'<span class="\w+">', "", sub(r"<\/span>", "", st+" "))
     st = sub("<.>", "", sub(r"<\/.>", ""))
-    eEDIT("coder", st)
+    gID("coder").innerHTML = st
 
 def fn(*args):
     rm()
-    code = doc["coder"].text.replace("<div>", '\n').replace("</div>", '\t');
+    code = doc["coder"].innerHTML.replace("<div>", '\n').replace("</div>", '\t');
     code = sub(r"'(.*)'", r"<s>'\1'<<>", code)
     code = sub(r"([uUfF])'(.*)'", r"<d>\1'\2'<<>", code)
     code = sub(r"([rRuU])'(.*)'", r"<x>\1'\2'<<>", code)
