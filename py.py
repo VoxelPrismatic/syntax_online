@@ -3,19 +3,19 @@ from re import sub, match
 from fns import *
 doc = document;
 def sp(inp, typ):
-    if typ == "function"
+    if typ == "function":
         return f"<f>{inp}<<>"
-    elif typ == "string"
+    elif typ == "string":
         return f"<s>{inp}<<>"
-    elif typ == "builtin"
+    elif typ == "builtin":
         return f"<t>{inp}<<>"
-    elif typ == "operand"
+    elif typ == "operand":
         return f"<o>{inp}<<>"
-    elif typ == "comment"
+    elif typ == "comment":
         return f"<c>{inp}<<>"
-    elif typ == "bytes"
+    elif typ == "bytes":
         return f"<x>{inp}<<>"
-    elif typ == "fstring"
+    elif typ == "fstring":
         return f"<d>{inp}<<>"
     return inp
 
@@ -23,7 +23,7 @@ def st(inp, typ):
     return f'<span class="{typ}">{inp}</span>'
 
 def rm():
-    st = doc.getElementById("coder").innerHTML
+    st = gHTML("coder")
     st = sub(r'<span class="\w+">', "", sub(r"<\/span>", "", st+" "))
     st = sub("<.>", "", sub(r"<\/.>", ""))
     eEDIT("coder", st)
@@ -52,7 +52,7 @@ def fn():
     code = code.replace("<d>", '<span class="fstring">').replace("<<>", '</span>');
     #code = regex(/<span class="(.*)">(.*)<span class=".*">(.*)<\/span>(.*)<\/span>/, code, sp("${2}${3}${4}", "${1}"));
     doc.getElementById("coder").innerHTML = code.replace("\n","<div>").replace("\t","</div>");
-    console.log(doc.getElementById("coder").innerHTML);
+    #console.log(doc.getElementById("coder").innerHTML);
 }
 doc["coder"].bind("focusout", fn);
 doc["coder"].bind("focusin", rm);
