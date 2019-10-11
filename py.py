@@ -1,26 +1,6 @@
 from browser import window as win, document as doc, html
 from re import sub, match
 from fns import *
-doc = document;
-def sp(inp, typ):
-    if typ == "function":
-        return f"<f>{inp}<<>"
-    elif typ == "string":
-        return f"<s>{inp}<<>"
-    elif typ == "builtin":
-        return f"<t>{inp}<<>"
-    elif typ == "operand":
-        return f"<o>{inp}<<>"
-    elif typ == "comment":
-        return f"<c>{inp}<<>"
-    elif typ == "bytes":
-        return f"<x>{inp}<<>"
-    elif typ == "fstring":
-        return f"<d>{inp}<<>"
-    return inp
-
-def st(inp, typ):
-    return f'<span class="{typ}">{inp}</span>'
 
 def rm():
     st = gHTML("coder")
@@ -29,6 +9,7 @@ def rm():
     eEDIT("coder", st)
 
 def fn():
+    rm()
     code = doc["coder"].text.replace("<div>", '\n').replace("</div>", '\t');
     code = sub(r"'(.*)'", r"<s>'\1'<<>", code)
     code = sub(r"([uUfF])'(.*)'", r"<d>\1'\2'<<>", code)
@@ -55,4 +36,3 @@ def fn():
     #console.log(doc.getElementById("coder").innerHTML);
 
 doc["coder"].bind("focusout", fn);
-doc["coder"].bind("focusin", rm);
