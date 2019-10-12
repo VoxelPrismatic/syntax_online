@@ -28,9 +28,9 @@ def fn(*args):
     code = sub(r'[^rRuUfFbB]"(.*)"', r'<S>"\1"<<>', code)
     code = sub(r"\#(.*)", r"<C>\#\1<<>", code)
     code = sub(r"<([A-Z])>(.*)<[A-Z]>(.*)<<>(.*)<<>", r"<\1>\2\3\4<<>"
-    code = code.replace("<f>", '<span class="function">').replace("<s>", '<span class="string">')
-    code = code.replace("<t>", '<span class="builtin">').replace("<o>", '<span class="operand">')
-    code = code.replace("<c>", '<span class="comment">').replace("<x>", '<span class="bytes">')
-    code = code.replace("<d>", '<span class="fstring">').replace("<<>", '</span>');
+    code = code.replace("<F>", '<span class="function">').replace("<S>", '<span class="string">')
+    code = code.replace("<T>", '<span class="builtin">').replace("<O>", '<span class="operand">')
+    code = code.replace("<C>", '<span class="comment">').replace("<X>", '<span class="bytes">')
+    code = code.replace("<D>", '<span class="fstring">').replace("<<>", '</span>');
     doc["coder"].innerHTML = code.replace("\|","<div>").replace("\~","</div>");
 doc["coder"].bind("focusout", fn);
